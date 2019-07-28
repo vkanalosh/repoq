@@ -29,6 +29,7 @@ namespace ComplexNumbers
             get
             {
                 return (this.B == 0);
+                // now here.
             }
             set
             { 
