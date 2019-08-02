@@ -28,6 +28,8 @@ namespace Fractions
                 case "+":
                     Fractions resultAdd = first.Add(second);
                     resultAdd.Result(resultAdd);
+                    resultAdd.Reducing(resultAdd);
+                    resultAdd.ReducingResult(resultAdd);
                     break;
 
                 case "-":
@@ -43,15 +45,11 @@ namespace Fractions
                 case "/":
                     Fractions resultDiv = first.Div(second);
                     resultDiv.Result(resultDiv);
+                    resultDiv.Reducing(resultDiv);
+                    resultDiv.ReducingResult(resultDiv);
                     break;
                     
-
-                    
             }
-
-
-
-
 
         }
     }
