@@ -27,26 +27,26 @@ namespace Fractions
             {
                 case "+":
                     Fractions resultAdd = first.Add(second);
-                    resultAdd.Result(resultAdd);
-                    resultAdd.Reducing(resultAdd);
-                    resultAdd.ReducingResult(resultAdd);
+                    resultAdd.Result();
+                    resultAdd.Reducing();
+                    resultAdd.ReducingResult();
                     break;
 
                 case "-":
                     Fractions resultSub = first.Sub(second);
-                    resultSub.Result(resultSub);
+                    resultSub.Result();
                     break;
 
                 case "*":
                     Fractions resultMulti = first.Multi(second);
-                    resultMulti.Result(resultMulti);
+                    resultMulti.Result();
                     break;
 
                 case "/":
                     Fractions resultDiv = first.Div(second);
-                    resultDiv.Result(resultDiv);
-                    resultDiv.Reducing(resultDiv);
-                    resultDiv.ReducingResult(resultDiv);
+                    resultDiv.Result();
+                    resultDiv.Reducing();
+                    resultDiv.ReducingResult();
                     break;
                     
             }

@@ -54,44 +54,25 @@ namespace Fractions
         }
 
         public Fractions Multi(Fractions other)
-        {
-            if (Denominator == other.Denominator)
-            {
+           { 
                 long a = Numerator * other.Numerator;
                 long b = Denominator * other.Denominator;
                 return new Fractions(a, b);
-            }
-            else
-            {
-                long a = Numerator * other.Numerator;
-                long b = Denominator * other.Denominator;
-                return new Fractions(a, b);
-            }
-
-        }
+           }
 
         public Fractions Div(Fractions other)
         {
-            if (Denominator == other.Denominator)
-            {
                 long a = Numerator * other.Denominator;
                 long b = Denominator * other.Numerator;
                 return new Fractions(a, b);
-            }
-            else
-            {
-                long a = Numerator * other.Denominator;
-                long b = Denominator * other.Numerator;
-                return new Fractions(a, b);
-            }
         }
 
-        public void Result(Fractions other)
+        public void Result()
         {
-            Console.WriteLine($"fractions 3 = {other.Numerator}/{other.Denominator}");
+            Console.WriteLine($"fractions 3 = {Numerator}/{Denominator}");
         }
 
-        public Fractions Reducing(Fractions other)
+        public Fractions Reducing()
         {
             long a = Numerator;
             long b = Denominator;
@@ -106,9 +87,9 @@ namespace Fractions
             Denominator = Denominator / a;
             return new Fractions(Numerator, Denominator);
         }
-        public void ReducingResult(Fractions other)
+        public void ReducingResult()
         {
-            Console.WriteLine($"Reducing of fractions 3 = {other.Numerator}/{other.Denominator}");
+            Console.WriteLine($"Reducing of fractions 3 = {Numerator}/{Denominator}");
         }
     }
 }
