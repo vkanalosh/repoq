@@ -14,42 +14,39 @@ namespace Bank
             Array.counter++;
         }
 
-        public static void HandlePut(string accountid, string money)
+        public static void HandlePut(string accountid, decimal money)
         {
-            int account_number_put = GetById(accountid);
-            decimal amount_put = Convert.ToDecimal(money);
-            Array.Account[account_number_put].MoneyAmount += amount_put;
-            Console.WriteLine("Account with ID {0} have {1} money.", Array.Account[account_number_put].Id, Array.Account[account_number_put].MoneyAmount);
+            int AccountNumberPut = GetById(accountid);
+            Array.Account[AccountNumberPut].MoneyAmount += money;
+            Console.WriteLine("Account with ID {0} have {1} money.", Array.Account[AccountNumberPut].Id, Array.Account[AccountNumberPut].MoneyAmount);
         }
 
-         public static void HandleWidthdraw(string accountid, string money)
+         public static void HandleWidthdraw(string accountid, decimal money)
         {
-            int account_number_widthdraw = GetById(accountid);
-            decimal amount_widthdraw = Convert.ToDecimal(money);
+            int AccountNumberWidthdraw = GetById(accountid);
 
-            if (Array.Account[account_number_widthdraw].MoneyAmount < amount_widthdraw)
+            if (Array.Account[AccountNumberWidthdraw].MoneyAmount < money)
             {
                 Console.WriteLine("not enough money.");
             }
 
             else
             {
-                Array.Account[account_number_widthdraw].MoneyAmount -= amount_widthdraw;
-                Console.WriteLine("Account with ID {0} have {1} money", Array.Account[account_number_widthdraw].Id, Array.Account[account_number_widthdraw].MoneyAmount);
+                Array.Account[AccountNumberWidthdraw].MoneyAmount -= money;
+                Console.WriteLine("Account with ID {0} have {1} money", Array.Account[AccountNumberWidthdraw].Id, Array.Account[AccountNumberWidthdraw].MoneyAmount);
             }
         }
 
-         public static void HandleSend(string senderAccountNumber, string recepientAccountNumber, string money)
+         public static void HandleSend(string senderAccountNumber, string recepientAccountNumber, decimal money)
         {
-            int sender_AccountNumber = GetById(senderAccountNumber);
-            int recepient_AccountNumber = GetById(recepientAccountNumber);
-            decimal amount_send = Convert.ToDecimal(money);
+            int SenderAccountNumber = GetById(senderAccountNumber);
+            int RecepientAccountNumber = GetById(recepientAccountNumber);
 
-            if (Array.Account[sender_AccountNumber].MoneyAmount > amount_send)
+            if (Array.Account[SenderAccountNumber].MoneyAmount > money)
             {
-                Array.Account[recepient_AccountNumber].MoneyAmount += amount_send;
-                Array.Account[sender_AccountNumber].MoneyAmount -= amount_send;
-                Console.WriteLine("recepient = {0}\nsender = {1}", Array.Account[recepient_AccountNumber].MoneyAmount, Array.Account[sender_AccountNumber].MoneyAmount);
+                Array.Account[RecepientAccountNumber].MoneyAmount += money;
+                Array.Account[SenderAccountNumber].MoneyAmount -= money;
+                Console.WriteLine("recepient = {0}\nsender = {1}", Array.Account[RecepientAccountNumber].MoneyAmount, Array.Account[SenderAccountNumber].MoneyAmount);
             }
 
             else

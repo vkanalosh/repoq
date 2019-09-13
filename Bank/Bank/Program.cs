@@ -29,15 +29,15 @@ namespace Bank
                         break;
 
                     case "widthdraw":
-                        Handle.HandleWidthdraw(arguments[1], arguments[2]);
+                        Handle.HandleWidthdraw(arguments[1], Convert.ToDecimal(arguments[2]));
                         break;
 
                     case "put":
-                        Handle.HandlePut(arguments[1], arguments[2]);
+                        Handle.HandlePut(arguments[1], Convert.ToDecimal(arguments[2]));
                         break;
 
                     case "send":
-                        Handle.HandleSend(arguments[1], arguments[2], arguments[3]);
+                        Handle.HandleSend(arguments[1], arguments[2], Convert.ToDecimal(arguments[3]));
                         break;
                 }
             }
