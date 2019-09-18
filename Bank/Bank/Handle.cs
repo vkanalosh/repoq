@@ -8,31 +8,31 @@ namespace Bank
     {
        public static void HandleAdd(string accountId)
        {
-            Array.Add();
-            Array.CreateAccount();
-            Array.ReturnBankAccount(Array.Counter()).Id = accountId;
-            Array.CounterPlus();
+            BankArray.Add();
+            BankArray.CreateAccount();
+            BankArray.ReturnBankAccount(BankArray.Counter()).Id = accountId;
+            BankArray.CounterPlus();
        }
         
        public static void HandlePut(string accountId, decimal money)
        {
            int AccountNumberPut = GetById(accountId);
-           Array.ReturnBankAccount(AccountNumberPut).MoneyAmount += money;
-           Console.WriteLine("Account with ID {0} have {1} money.", Array.ReturnBankAccount(AccountNumberPut).Id, Array.ReturnBankAccount(AccountNumberPut).MoneyAmount);
+           BankArray.ReturnBankAccount(AccountNumberPut).MoneyAmount += money;
+           Console.WriteLine("Account with ID {0} have {1} money.", BankArray.ReturnBankAccount(AccountNumberPut).Id, BankArray.ReturnBankAccount(AccountNumberPut).MoneyAmount);
        }
       
        public static void HandleWidthdraw(string accountId, decimal money)
        {
            int AccountNumberWidthdraw = GetById(accountId);
 
-           if (Array.ReturnBankAccount(AccountNumberWidthdraw).MoneyAmount < money)
+           if (BankArray.ReturnBankAccount(AccountNumberWidthdraw).MoneyAmount < money)
            {
                Console.WriteLine("not enough money.");
            }
            else
            {
-               Array.ReturnBankAccount(AccountNumberWidthdraw).MoneyAmount -= money;
-               Console.WriteLine("Account with ID {0} have {1} money", Array.ReturnBankAccount(AccountNumberWidthdraw).Id, Array.ReturnBankAccount(AccountNumberWidthdraw).MoneyAmount);
+               BankArray.ReturnBankAccount(AccountNumberWidthdraw).MoneyAmount -= money;
+               Console.WriteLine("Account with ID {0} have {1} money", BankArray.ReturnBankAccount(AccountNumberWidthdraw).Id, BankArray.ReturnBankAccount(AccountNumberWidthdraw).MoneyAmount);
            }
        }
 
@@ -41,11 +41,11 @@ namespace Bank
            int senderAccountNumber = GetById(senderAccount);
            int recepientAccountNumber = GetById(recepientAccount);
 
-           if (Array.ReturnBankAccount(senderAccountNumber).MoneyAmount > money)
+           if (BankArray.ReturnBankAccount(senderAccountNumber).MoneyAmount > money)
            {
-               Array.ReturnBankAccount(recepientAccountNumber).MoneyAmount += money;
-               Array.ReturnBankAccount(senderAccountNumber).MoneyAmount -= money;
-               Console.WriteLine("recepient = {0}\nsender = {1}", Array.ReturnBankAccount(recepientAccountNumber).MoneyAmount, Array.ReturnBankAccount(senderAccountNumber).MoneyAmount);
+               BankArray.ReturnBankAccount(recepientAccountNumber).MoneyAmount += money;
+               BankArray.ReturnBankAccount(senderAccountNumber).MoneyAmount -= money;
+               Console.WriteLine("recepient = {0}\nsender = {1}", BankArray.ReturnBankAccount(recepientAccountNumber).MoneyAmount, BankArray.ReturnBankAccount(senderAccountNumber).MoneyAmount);
            }
            else
            {
@@ -56,9 +56,9 @@ namespace Bank
        public static int GetById(string accountId)
        {
             int i;
-            for (i = 0; i < Array.Counter(); i++)
+            for (i = 0; i < BankArray.Counter(); i++)
             {
-                if (accountId == Array.ReturnBankAccount(i).Id)
+                if (accountId == BankArray.ReturnBankAccount(i).Id)
                 {
                     return i;
                 }
