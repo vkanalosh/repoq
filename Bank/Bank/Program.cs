@@ -7,7 +7,7 @@ namespace Bank
         public static string FullLine;
         public static string[] Arguments;
         public static string Comand;
-        
+
         public static void Write()
         {
             Console.WriteLine("Enter comand: add, widthdraw, put, send and parameters.");
@@ -17,13 +17,14 @@ namespace Bank
         }
         static int Main(string[] args)
         {
-            
+
             while (true)
             {
                 Write();
 
                 switch (Comand)
                 {
+
                     case "add":
                         Handle.HandleAdd(Arguments[1]);
                         break;
@@ -40,7 +41,9 @@ namespace Bank
                         Handle.HandleSend(Arguments[1], Arguments[2], Convert.ToDecimal(Arguments[3]));
                         break;
                 }
+
             }
+
         }
     }
 }
