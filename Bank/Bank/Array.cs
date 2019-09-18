@@ -6,21 +6,21 @@ namespace Bank
 {
     public class Array
     {
-        public static int counter = 0;
-        public static int length = 10;
+        public static int Counter = 0;
+        public static int Length = 10;
 
-        public static BankAccount[] Account = new BankAccount[length];
+        public static BankAccount[] Account = new BankAccount[Length];
 
         public static void Add()
         {
-            if (length == counter)
+            if (Length == Counter)
             {
                 Console.WriteLine("Creating new Account length.");
-                length *= 2;
-                BankAccount[] AccountSave = new BankAccount[length];
-                Console.WriteLine("length{0}", length);
+                Length *= 2;
+                BankAccount[] AccountSave = new BankAccount[Length];
+                Console.WriteLine("length{0}", Length);
                 
-                for (int i = 0; i < counter; i++)
+                for (int i = 0; i < Counter; i++)
                 {
                     AccountSave[i] = new BankAccount();
                     AccountSave[i].Id = Account[i].Id;
