@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Bank
 {
-    public class Array
+    public class BankArray
     {
         private static int counter = 0;
         private static int length = 10;
