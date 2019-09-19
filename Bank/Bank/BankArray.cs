@@ -11,6 +11,14 @@ namespace Bank
 
         private BankAccount[] Account = new BankAccount[10];
 
+        public BankAccount this[int index]
+        {
+            get
+            {
+                return Account[index];
+            }
+        }
+        
         public void Add(string accountId)
         {
             Account[counter] = new BankAccount();
