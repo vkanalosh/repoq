@@ -6,14 +6,14 @@ namespace Bank
 {
     public class Handle
     {
-        public static BankArray ArrayBank = new BankArray();
+        public BankArray ArrayBank = new BankArray();
 
-        public static void HandleAdd(string accountId)
+        public void HandleAdd(string accountId)
         {
             ArrayBank.Add(accountId);
         }
 
-        public static void HandlePut(string accountId, decimal money)
+        public void HandlePut(string accountId, decimal money)
         {
            
             int accountNumberPut = GetById(accountId);
@@ -21,7 +21,7 @@ namespace Bank
             Console.WriteLine("Account with ID {0} have {1} money.", ArrayBank.ReturnBankAccount(accountNumberPut).Id, ArrayBank.ReturnBankAccount(accountNumberPut).MoneyAmount);
         }
 
-        public static void HandleWidthdraw(string accountId, decimal money)
+        public void HandleWidthdraw(string accountId, decimal money)
         {
             int accountNumberWidthdraw = GetById(accountId);
           
@@ -37,7 +37,7 @@ namespace Bank
             }
         }
 
-        public static void HandleSend(string senderAccount, string recepientAccount, decimal money)
+        public void HandleSend(string senderAccount, string recepientAccount, decimal money)
         {
             int senderAccountNumber = GetById(senderAccount);
             int recepientAccountNumber = GetById(recepientAccount);
@@ -55,7 +55,7 @@ namespace Bank
             }
         }
 
-        public static int GetById(string accountId)
+        public int GetById(string accountId)
         {
             int i;
             
