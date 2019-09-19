@@ -17,11 +17,10 @@ namespace Bank
         }
         static int Main(string[] args)
         {
-
             while (true)
             {
                 Write();
-
+                
                 switch (Comand)
                 {
 

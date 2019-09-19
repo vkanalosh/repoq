@@ -6,16 +6,17 @@ namespace Bank
 {
     public class BankArray
     {
-        private static int counter = 0;
-        private static int length = 10;
+        private int counter = 0;
+        private int length = 10;
 
-        private static BankAccount[] Account = new BankAccount[length];
+        private BankAccount[] Account = new BankAccount[10];
 
-        public static void Add(string accountId)
+        public void Add(string accountId)
         {
             Account[counter] = new BankAccount();
             Account[counter].Id = accountId;
             counter++;
+
             if (length == counter)
             {
                 Console.WriteLine("Creating new Account length.");
@@ -33,12 +34,12 @@ namespace Bank
             }
         }
 
-       public static int Counter()
+       public int Counter()
        {
             return counter;
        }
 
-       public static BankAccount ReturnBankAccount(int number)
+       public BankAccount ReturnBankAccount(int number)
        {
             return Account[number];
        }
