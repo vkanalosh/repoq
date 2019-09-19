@@ -41,9 +41,7 @@ namespace Bank
                         Handle.HandleSend(Arguments[1], Arguments[2], Convert.ToDecimal(Arguments[3]));
                         break;
                 }
-
             }
-
         }
     }
 }

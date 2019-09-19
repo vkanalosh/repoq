@@ -11,8 +11,11 @@ namespace Bank
 
         private static BankAccount[] Account = new BankAccount[length];
 
-        public static void Add()
+        public static void Add(string accountId)
         {
+            Account[counter] = new BankAccount();
+            Account[counter].Id = accountId;
+            counter++;
             if (length == counter)
             {
                 Console.WriteLine("Creating new Account length.");
@@ -33,16 +36,6 @@ namespace Bank
        public static int Counter()
        {
             return counter;
-       }
-
-       public static void CounterPlus()
-       {
-            counter++;
-       }
-
-       public static void CreateAccount()
-       {
-            Account[counter] = new BankAccount();
        }
 
        public static BankAccount ReturnBankAccount(int number)

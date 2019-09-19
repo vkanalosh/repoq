@@ -8,31 +8,28 @@ namespace Bank
     {
        public static void HandleAdd(string accountId)
        {
-            BankArray.Add();
-            BankArray.CreateAccount();
-            BankArray.ReturnBankAccount(BankArray.Counter()).Id = accountId;
-            BankArray.CounterPlus();
+            BankArray.Add(accountId);
        }
         
        public static void HandlePut(string accountId, decimal money)
        {
-           int AccountNumberPut = GetById(accountId);
-           BankArray.ReturnBankAccount(AccountNumberPut).MoneyAmount += money;
-           Console.WriteLine("Account with ID {0} have {1} money.", BankArray.ReturnBankAccount(AccountNumberPut).Id, BankArray.ReturnBankAccount(AccountNumberPut).MoneyAmount);
+           int accountNumberPut = GetById(accountId);
+           BankArray.ReturnBankAccount(accountNumberPut).MoneyAmount += money;
+           Console.WriteLine("Account with ID {0} have {1} money.", BankArray.ReturnBankAccount(accountNumberPut).Id, BankArray.ReturnBankAccount(accountNumberPut).MoneyAmount);
        }
       
        public static void HandleWidthdraw(string accountId, decimal money)
        {
-           int AccountNumberWidthdraw = GetById(accountId);
+           int accountNumberWidthdraw = GetById(accountId);
 
-           if (BankArray.ReturnBankAccount(AccountNumberWidthdraw).MoneyAmount < money)
+           if (BankArray.ReturnBankAccount(accountNumberWidthdraw).MoneyAmount < money)
            {
                Console.WriteLine("not enough money.");
            }
            else
            {
-               BankArray.ReturnBankAccount(AccountNumberWidthdraw).MoneyAmount -= money;
-               Console.WriteLine("Account with ID {0} have {1} money", BankArray.ReturnBankAccount(AccountNumberWidthdraw).Id, BankArray.ReturnBankAccount(AccountNumberWidthdraw).MoneyAmount);
+               BankArray.ReturnBankAccount(accountNumberWidthdraw).MoneyAmount -= money;
+               Console.WriteLine("Account with ID {0} have {1} money", BankArray.ReturnBankAccount(accountNumberWidthdraw).Id, BankArray.ReturnBankAccount(accountNumberWidthdraw).MoneyAmount);
            }
        }
 
