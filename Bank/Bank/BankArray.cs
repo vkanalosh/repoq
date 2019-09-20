@@ -35,8 +35,7 @@ namespace Bank
                 for (int i = 0; i < counter; i++)
                 {
                     AccountSave[i] = new BankAccount();
-                    AccountSave[i].Id = Account[i].Id;
-                    AccountSave[i].MoneyAmount = Account[i].MoneyAmount;
+                    AccountSave[i] = Account[i];
                 }
                 Account = AccountSave;
             }
