@@ -4,15 +4,15 @@ namespace Bank
 {
     public class Program
     {
-        public static string FullLine;
+        public static string fullLine;
         public static string[] Arguments;
         public static string Comand;
 
         public static void Write()
         {
             Console.WriteLine("Enter comand: add, widthdraw, put, send and parameters.");
-            FullLine = Console.ReadLine();
-            Arguments = FullLine.Split(" ");
+            fullLine = Console.ReadLine();
+            Arguments = fullLine.Split(" ");
             Comand = Arguments[0];
         }
         static int Main(string[] args)
