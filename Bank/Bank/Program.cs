@@ -10,7 +10,7 @@ namespace Bank
 
         public static void Write()
         {
-            Console.WriteLine("Enter comand: add, widthdraw, put, send and parameters.");
+            Console.WriteLine("Enter comand: add, addRange, widthdraw, put, send and parameters.");
             fullLine = Console.ReadLine();
             Arguments = fullLine.Split(" ");
             Comand = Arguments[0];
@@ -28,6 +28,10 @@ namespace Bank
 
                     case "add":
                         HandleMethods.HandleAdd(Arguments[1]);
+                        break;
+
+                    case "addRange":
+                        HandleMethods.HandleAddRange(Arguments);
                         break;
 
                     case "widthdraw":

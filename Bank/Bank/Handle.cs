@@ -13,6 +13,11 @@ namespace Bank
             ArrayBank.Add(accountId);
         }
 
+        public void HandleAddRange(string[] arguments)
+        {
+            ArrayBank.AddRange(arguments);
+        }
+
         public void HandlePut(string accountId, decimal money)
         {
 

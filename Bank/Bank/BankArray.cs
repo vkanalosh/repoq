@@ -18,7 +18,7 @@ namespace Bank
                 return Account[index];
             }
         }
-        
+
         public void Add(string accountId)
         {
             Account[counter] = new BankAccount();
@@ -41,7 +41,32 @@ namespace Bank
             }
         }
 
-       public int Counter()
+        public void AddRange(string[] arguments)
+        {
+            for (int i = 1; arguments.Length > i; i++)
+            {
+                Account[counter] = new BankAccount();
+                Account[counter].Id = arguments[i];
+                counter++;
+
+                if (length == counter)
+                {
+                    Console.WriteLine("Creating new Account length.");
+                    length *= 2;
+                    BankAccount[] AccountSave = new BankAccount[length];
+                    Console.WriteLine("length{0}", length);
+
+                    for (int b = 0; b < counter; b++)
+                    {
+                        AccountSave[b] = new BankAccount();
+                        AccountSave[b] = Account[b];
+                    }
+                    Account = AccountSave;
+                }
+            }
+        }
+
+        public int Counter()
        {
             return counter;
        }
