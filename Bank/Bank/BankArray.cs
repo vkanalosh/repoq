@@ -83,18 +83,15 @@ namespace Bank
         {
             for (int i = 1; i < arguments.Length; i++)
             {
+                if (arguments[i] == arguments[i++])
+                {
+                    throw new Exception("There should not be more than 1 account with same name.");
+                }
                 for (int b = 0; b < counter; b++)
                 {
                     if (arguments[i] == Account[b].Id)
                     {
                         throw new Exception("There should not be more than 1 account with same name.");
-                    }
-                    for (int c = 1; c < arguments.Length; c++)
-                    {
-                        if (arguments[c] == arguments[c++])
-                        {
-                            throw new Exception("There should not be more than 1 account with same name.");
-                        }
                     }
                 }
             }
