@@ -4,9 +4,9 @@ namespace Bank
 {
     public class Program
     {
-        public static string fullLine;
-        public static string[] Arguments;
-        public static string Comand;
+        private static string fullLine;
+        private static string[] Arguments;
+        private static string Comand;
 
         public static void Write()
         {
