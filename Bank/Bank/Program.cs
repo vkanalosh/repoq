@@ -8,7 +8,7 @@ namespace Bank
         private static string[] Arguments;
         private static string Comand;
 
-        public static void Write()
+        private static void Write()
         {
             Console.WriteLine("Enter comand: add, addRange, widthdraw, put, send and parameters.");
             fullLine = Console.ReadLine();

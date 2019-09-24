@@ -6,7 +6,7 @@ namespace Bank
 {
     public class Handle
     {
-        public BankArray ArrayBank = new BankArray();
+        private BankArray ArrayBank = new BankArray();
 
         public void HandleAdd(string accountId)
         {
