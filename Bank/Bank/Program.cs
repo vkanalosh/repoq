@@ -21,30 +21,37 @@ namespace Bank
 
             while (true)
             {
-                Write();
-                
-                switch (Comand)
+                try
                 {
+                    Write();
 
-                    case "add":
-                        handleMethods.HandleAdd(Arguments[1]);
-                        break;
+                    switch (Comand)
+                    {
 
-                    case "addRange":
-                        handleMethods.HandleAddRange(Arguments);
-                        break;
+                        case "add":
+                            handleMethods.HandleAdd(Arguments[1]);
+                            break;
 
-                    case "widthdraw":
-                        handleMethods.HandleWidthdraw(Arguments[1], Convert.ToDecimal(Arguments[2]));
-                        break;
+                        case "addRange":
+                            handleMethods.HandleAddRange(Arguments);
+                            break;
 
-                    case "put":
-                        handleMethods.HandlePut(Arguments[1], Convert.ToDecimal(Arguments[2]));
-                        break;
+                        case "widthdraw":
+                            handleMethods.HandleWidthdraw(Arguments[1], Convert.ToDecimal(Arguments[2]));
+                            break;
 
-                    case "send":
-                        handleMethods.HandleSend(Arguments[1], Arguments[2], Convert.ToDecimal(Arguments[3]));
-                        break;
+                        case "put":
+                            handleMethods.HandlePut(Arguments[1], Convert.ToDecimal(Arguments[2]));
+                            break;
+
+                        case "send":
+                            handleMethods.HandleSend(Arguments[1], Arguments[2], Convert.ToDecimal(Arguments[3]));
+                            break;
+                    }
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine($"Exception: {ex.Message}");
                 }
             }
         }

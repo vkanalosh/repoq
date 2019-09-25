@@ -57,10 +57,9 @@ namespace Bank
         {
             int accountNumberWidthdraw = GetById(accountId);
 
-
             if (ArrayBank[accountNumberWidthdraw].MoneyAmount < money)
             {
-                Console.WriteLine("not enough money.");
+                throw new Exception("not enough money.");
             }
             else
             {
@@ -83,15 +82,13 @@ namespace Bank
             }
             else
             {
-                Console.WriteLine("not enough money.");
+                throw new Exception("not enough money.");
             }
         }
 
         private int GetById(string accountId)
         {
-            int i;
-
-            for (i = 0; i < ArrayBank.Counter(); i++)
+            for (int i = 0; i < ArrayBank.Counter(); i++)
             {
                 if (accountId == ArrayBank[i].Id)
                 {
