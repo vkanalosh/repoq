@@ -17,14 +17,17 @@ namespace Bank
             {
                 return Account[index];
             }
+            set
+            {
+                Account[index] = value;
+            }
         }
 
-        public void Add(string accountId)
+        public void Add(BankAccount other)
         {
-            CheckAdd(accountId);
+            CheckAdd(other.Id);
 
-            Account[counter] = new BankAccount();
-            Account[counter].Id = accountId;
+            Account[counter] = other;
             counter++;
 
             if (length == counter)
@@ -42,14 +45,13 @@ namespace Bank
             }
         }
 
-        public void AddRange(string[] arguments)
+        public void AddRange(BankAccount[] other)
         {
-            CheckAddRange(arguments);
+            CheckAddRange(other);
 
-            for (int i = 1; i < arguments.Length; i++)
+            for (int i = 1; i < other.Length; i++)
             {
-                Account[counter] = new BankAccount();
-                Account[counter].Id = arguments[i];
+                Account[counter] = other[counter];
                 counter++;
 
                 if (length == counter)
@@ -79,13 +81,13 @@ namespace Bank
             }
         }
 
-        private void CheckAddRange(string[] arguments)
+        private void CheckAddRange(BankAccount[] other)
         {
-            for (int i = 1; i < arguments.Length; i++)
+            for (int i = 1; i < other.Length; i++)
             {
                 for (int b = 0; b < counter; b++)
                 {
-                    if (arguments[i] == Account[b].Id)
+                    if (other[i].Id == Account[b].Id)
                     {
                         throw new Exception("There should not be more than 1 account with same name.");
                     }
@@ -96,11 +98,6 @@ namespace Bank
         public int Counter()
         {
             return counter;
-        }
-
-        public int Length()
-        {
-            return length;
         }
     }
 }

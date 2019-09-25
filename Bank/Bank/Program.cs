@@ -17,7 +17,7 @@ namespace Bank
         }
         static int Main(string[] args)
         {
-            Handle HandleMethods = new Handle();
+            Handle handleMethods = new Handle();
 
             while (true)
             {
@@ -27,23 +27,23 @@ namespace Bank
                 {
 
                     case "add":
-                        HandleMethods.HandleAdd(Arguments[1]);
+                        handleMethods.HandleAdd(Arguments[1]);
                         break;
 
                     case "addRange":
-                        HandleMethods.HandleAddRange(Arguments);
+                        handleMethods.HandleAddRange(Arguments);
                         break;
 
                     case "widthdraw":
-                        HandleMethods.HandleWidthdraw(Arguments[1], Convert.ToDecimal(Arguments[2]));
+                        handleMethods.HandleWidthdraw(Arguments[1], Convert.ToDecimal(Arguments[2]));
                         break;
 
                     case "put":
-                        HandleMethods.HandlePut(Arguments[1], Convert.ToDecimal(Arguments[2]));
+                        handleMethods.HandlePut(Arguments[1], Convert.ToDecimal(Arguments[2]));
                         break;
 
                     case "send":
-                        HandleMethods.HandleSend(Arguments[1], Arguments[2], Convert.ToDecimal(Arguments[3]));
+                        handleMethods.HandleSend(Arguments[1], Arguments[2], Convert.ToDecimal(Arguments[3]));
                         break;
                 }
             }
