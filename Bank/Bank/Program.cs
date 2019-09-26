@@ -49,9 +49,10 @@ namespace Bank
                             break;
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine($"Exception: {ex.Message}");
+                    throw;
                 }
             }
         }

@@ -19,30 +19,16 @@ namespace Bank
 
         public void HandleAddRange(string[] arguments)
         {
-            int length = 10;
-            int counter = 0;
-            BankAccount[] account = new BankAccount[length];
+            BankAccount[] account = new BankAccount[arguments.Length];
 
             for (int i = 1; i < arguments.Length; i++)
             {
-                account[counter] = new BankAccount();
-                account[counter].Id = arguments[i];
-                account[counter].MoneyAmount = 0;
-                counter++;
-
-                if (length == counter)
-                {
-                    length *= 2;
-                    BankAccount[] accountSave = new BankAccount[length];
-
-                    for (int b = 0; b < counter; b++)
-                    {
-                        accountSave[b] = account[b];
-                    }
-                    account = accountSave;
-                }
+                account[i] = new BankAccount();
+                account[i].Id = arguments[i];
+                account[i].MoneyAmount = 0;
+                
             }
-                ArrayBank.AddRange(account);
+            ArrayBank.AddRange(account);
         }
 
         public void HandlePut(string accountId, decimal money)

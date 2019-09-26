@@ -51,14 +51,14 @@ namespace Bank
 
             for (int i = 1; i < other.Length; i++)
             {
-                Account[counter] = other[counter];
+                Account[counter] = other[i];
                 counter++;
 
                 if (length == counter)
                 {
                     Console.WriteLine("Creating new Account length.");
                     length *= 2;
-                    BankAccount[] AccountSave = new BankAccount[length];
+                    BankAccount[] AccountSave = new BankAccount[length] ;
                     Console.WriteLine("length{0}", length);
 
                     for (int b = 0; b < counter; b++)
@@ -93,11 +93,14 @@ namespace Bank
                     }
                 }
             }
+            
         }
 
         public int Counter()
         {
             return counter;
         }
+
+
     }
 }
