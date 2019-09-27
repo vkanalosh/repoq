@@ -72,6 +72,14 @@ namespace Bank
             }
         }
 
+        public void HandleList()
+        {
+            for (int i = 0; i < ArrayBank.Counter(); i++)
+            {
+                Console.WriteLine($"{ArrayBank[i].Id} {ArrayBank[i].MoneyAmount}");
+            }
+        }
+
         private int GetById(string accountId)
         {
             for (int i = 0; i < ArrayBank.Counter(); i++)
