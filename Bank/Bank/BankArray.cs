@@ -30,19 +30,7 @@ namespace Bank
             Account[counter] = other;
             counter++;
 
-            if (length == counter)
-            {
-                Console.WriteLine("Creating new Account length.");
-                length *= 2;
-                BankAccount[] AccountSave = new BankAccount[length];
-                Console.WriteLine("length{0}", length);
-
-                for (int i = 0; i < counter; i++)
-                {
-                    AccountSave[i] = Account[i];
-                }
-                Account = AccountSave;
-            }
+            CheckLength();
         }
 
         public void AddRange(BankAccount[] other)
@@ -54,19 +42,7 @@ namespace Bank
                 Account[counter] = other[i];
                 counter++;
 
-                if (length == counter)
-                {
-                    Console.WriteLine("Creating new Account length.");
-                    length *= 2;
-                    BankAccount[] AccountSave = new BankAccount[length] ;
-                    Console.WriteLine("length{0}", length);
-
-                    for (int b = 0; b < counter; b++)
-                    {
-                        AccountSave[b] = Account[b];
-                    }
-                    Account = AccountSave;
-                }
+                CheckLength();
             }
         }
 
@@ -93,14 +69,28 @@ namespace Bank
                     }
                 }
             }
-            
+        }
+
+        private void CheckLength()
+        {
+            if (length == counter)
+            {
+                Console.WriteLine("Creating new Account length.");
+                length *= 2;
+                BankAccount[] AccountSave = new BankAccount[length];
+                Console.WriteLine("length{0}", length);
+
+                for (int i = 0; i < counter; i++)
+                {
+                    AccountSave[i] = Account[i];
+                }
+                Account = AccountSave;
+            }
         }
 
         public int Counter()
         {
             return counter;
         }
-
-
     }
 }
