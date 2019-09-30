@@ -6,8 +6,13 @@ namespace Bank
 {
     public class BankAccount
     {
-        public string Id { get; set; }
+        public string Id { get;}
 
-        public decimal MoneyAmount {get; set;}
+        public decimal MoneyAmount { get; set;}
+
+        public BankAccount(string id)
+        {
+            Id = id;
+        }
     }
 }

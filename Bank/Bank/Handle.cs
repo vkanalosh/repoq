@@ -10,8 +10,8 @@ namespace Bank
 
         public void HandleAdd(string accountId)
         {
-            BankAccount account = new BankAccount();
-            account.Id = accountId;
+            BankAccount account = new BankAccount(accountId);
+            // account.Id = accountId;
             account.MoneyAmount = 0;
 
             ArrayBank.Add(account);
@@ -23,8 +23,8 @@ namespace Bank
 
             for (int i = 1; i < arguments.Length; i++)
             {
-                account[i] = new BankAccount();
-                account[i].Id = arguments[i];
+                account[i] = new BankAccount(arguments[i]);
+                // account[i].Id = arguments[i];
                 account[i].MoneyAmount = 0;
                 
             }
