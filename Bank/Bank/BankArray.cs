@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
 namespace Bank
 {
@@ -8,6 +9,7 @@ namespace Bank
     {
         private int counter = 0;
         private int length = 10;
+        private string path = @"C:\Users\Valera\source\repos\Bank\BankArray.txt";
 
         private BankAccount[] Account = new BankAccount[10];
 
@@ -25,17 +27,21 @@ namespace Bank
 
         public void Add(BankAccount other)
         {
-            CheckAdd(other.Id);
+            StreamWriter writeId = new StreamWriter(path, true);
+            writeId.WriteLine(other.Id);
+            writeId.Close();
+
+            CheckName(other.Id);
 
             Account[counter] = other;
             counter++;
 
             CheckLength();
         }
-
+        
         public void AddRange(BankAccount[] other)
         {
-            CheckAddRange(other);
+            CheckNameAddRange(other);
 
             for (int i = 1; i < other.Length; i++)
             {
@@ -43,10 +49,14 @@ namespace Bank
                 counter++;
 
                 CheckLength();
+
+                StreamWriter writeId = new StreamWriter(path, true);
+                writeId.WriteLine(other[i].Id);
+                writeId.Close();
             }
         }
 
-        private void CheckAdd(string accountId)
+        private void CheckName(string accountId)
         {
             for (int i = 0; i < counter; i++)
             {
@@ -57,17 +67,11 @@ namespace Bank
             }
         }
 
-        private void CheckAddRange(BankAccount[] other)
+        private void CheckNameAddRange(BankAccount[] other)
         {
             for (int i = 1; i < other.Length; i++)
             {
-                for (int b = 0; b < counter; b++)
-                {
-                    if (other[i].Id == Account[b].Id)
-                    {
-                        throw new Exception("There should not be more than 1 account with same name.");
-                    }
-                }
+                CheckName(other[i].Id);
             }
         }
 
@@ -86,6 +90,24 @@ namespace Bank
                 }
                 Account = AccountSave;
             }
+        }
+
+        public void WriteMoneyAmount(decimal moneyAmount)
+        {
+            string path = @"C:\Users\Valera\source\repos\Bank\BankArray.txt";
+
+            StreamWriter writeMoneyAmount = new StreamWriter(path, true);
+            writeMoneyAmount.WriteLine(moneyAmount);
+            writeMoneyAmount.Close();
+        }
+
+        public void ReadIdMoney()
+        {
+            string path = @"C:\Users\Valera\source\repos\Bank\BankArray.txt";
+            StreamReader readIdMoney = new StreamReader(path);
+
+            Console.WriteLine(readIdMoney.ReadToEnd());
+            readIdMoney.Close();
         }
 
         public int Counter()

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
 namespace Bank
 {
@@ -33,7 +34,6 @@ namespace Bank
 
         public void HandlePut(string accountId, decimal money)
         {
-
             int accountNumberPut = GetById(accountId);
             ArrayBank[accountNumberPut].MoneyAmount += money;
             Console.WriteLine("Account with ID {0} have {1} money.", ArrayBank[accountNumberPut].Id, ArrayBank[accountNumberPut].MoneyAmount);

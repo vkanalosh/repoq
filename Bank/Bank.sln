@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29020.237
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank", "Bank\Bank.csproj", "{C2C85788-72C2-44DB-BBA8-74FB59ABD391}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankArrayTest", "BankArrayTest\BankArrayTest.csproj", "{4D695AB1-E2FD-4638-A391-7585A8DAE2CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankArrayTest", "BankArrayTest\BankArrayTest.csproj", "{4D695AB1-E2FD-4638-A391-7585A8DAE2CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
