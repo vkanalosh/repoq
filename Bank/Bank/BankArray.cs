@@ -28,7 +28,8 @@ namespace Bank
         public void Add(BankAccount other)
         {
             StreamWriter writeId = new StreamWriter(path, true);
-            writeId.WriteLine(other.Id);
+            writeId.Write($"{other.Id} ");
+            writeId.WriteLine(other.MoneyAmount);
             writeId.Close();
 
             CheckName(other.Id);
@@ -51,7 +52,8 @@ namespace Bank
                 CheckLength();
 
                 StreamWriter writeId = new StreamWriter(path, true);
-                writeId.WriteLine(other[i].Id);
+                writeId.Write($"{other[i].Id} ");
+                writeId.WriteLine(other[i].MoneyAmount);
                 writeId.Close();
             }
         }
@@ -90,15 +92,6 @@ namespace Bank
                 }
                 Account = AccountSave;
             }
-        }
-
-        public void WriteMoneyAmount(decimal moneyAmount)
-        {
-            string path = @"C:\Users\Valera\source\repos\Bank\BankArray.txt";
-
-            StreamWriter writeMoneyAmount = new StreamWriter(path, true);
-            writeMoneyAmount.WriteLine(moneyAmount);
-            writeMoneyAmount.Close();
         }
 
         public void ReadIdMoney()
