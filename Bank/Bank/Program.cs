@@ -19,6 +19,8 @@ namespace Bank
         {
             Handle handleMethods = new Handle();
 
+            handleMethods.HandleLogin();
+
             while (true)
             {
                 try

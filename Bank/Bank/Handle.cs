@@ -9,6 +9,23 @@ namespace Bank
     {
         private BankArray ArrayBank = new BankArray();
 
+        public void HandleLogin()
+        {
+            string admin = "admin";
+
+            Console.WriteLine("Write login.");
+            string login = Console.ReadLine();
+
+            Console.WriteLine("Write password.");
+            string password = Console.ReadLine();
+
+            Console.WriteLine("Login successful.");
+            if ((login == admin) && (password == admin))
+            {
+                throw new Exception("By default there should be 1 person in the system with login admin and password admin.");
+            }
+        } 
+
         public void HandleAdd(string accountId)
         {
             BankAccount account = new BankAccount(accountId);
