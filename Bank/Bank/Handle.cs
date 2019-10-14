@@ -8,6 +8,10 @@ namespace Bank
     public class Handle
     {
         private BankArray ArrayBank = new BankArray();
+        private Person[] SomePerson = new Person[10];
+
+        int counterAdmin = 0;
+        int counter = 0;
 
         public void HandleLogin()
         {
@@ -19,11 +23,17 @@ namespace Bank
             Console.WriteLine("Write password.");
             string password = Console.ReadLine();
 
-            Console.WriteLine("Login successful.");
             if ((login == admin) && (password == admin))
+            {
+                counterAdmin++;
+            }
+
+            if(counterAdmin > 1)
             {
                 throw new Exception("By default there should be 1 person in the system with login admin and password admin.");
             }
+
+            Console.WriteLine("Login successful.");
         } 
 
         public void HandleAdd(string accountId)
@@ -46,6 +56,21 @@ namespace Bank
             }
             ArrayBank.AddRange(account);
         }
+
+        public void HandleAddPerson(string name, string password)
+        {
+            if(counterAdmin == 1)
+            {
+                SomePerson[counter] = new Person();
+                SomePerson[counter].Name = name;
+                SomePerson[counter].Password = password;
+                counter++;
+            }
+            else
+            {
+                throw new Exception("Only admin user can add person.");
+            }
+        } 
 
         public void HandlePut(string accountId, decimal money)
         {
