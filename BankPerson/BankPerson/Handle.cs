@@ -7,10 +7,8 @@ namespace BankPerson
     public class Handle
     {
         private BankArray ArrayBank = new BankArray();
-        private Person[] SomePerson = new Person[10];
 
         int counterAdmin = 0;
-        int counter = 0;
 
         public void HandleLogin()
         {
@@ -24,10 +22,10 @@ namespace BankPerson
 
             if ((login == admin) && (password == admin))
             {
-                counterAdmin++;
+                ArrayBank.AdminPlus();
             }
 
-            if (counterAdmin > 1)
+            if (ArrayBank.AdminCounter() > 1)
             {
                 throw new Exception("By default there should be 1 person in the system with login admin and password admin.");
             }
@@ -37,38 +35,29 @@ namespace BankPerson
 
         public void HandleAddPerson(string name, string password)
         {
-            if (counterAdmin == 1)
-            {
-                SomePerson[counter] = new Person();
-                SomePerson[counter].Name = name;
-                SomePerson[counter].Password = password;
-                counter++;
-            }
-            else
-            {
-                throw new Exception("Only admin user can add person.");
-            }
+            ArrayBank.AddPerson(name, password);
         }
 
-        public void HandleAdd(string accountId)
+        public void HandleAdd(string userName, string accountId)
         {
             BankAccount account = new BankAccount(accountId);
             account.MoneyAmount = 0;
 
-            ArrayBank.Add(account);
+            ArrayBank.Add(account, userName);
         }
 
         public void HandleAddRange(string[] arguments)
         {
+            string userName = arguments[1];
             BankAccount[] account = new BankAccount[arguments.Length];
 
-            for (int i = 1; i < arguments.Length; i++)
+            for (int i = 2; i < arguments.Length; i++)
             {
                 account[i] = new BankAccount(arguments[i]);
                 account[i].MoneyAmount = 0;
 
             }
-            ArrayBank.AddRange(account);
+            ArrayBank.AddRange(account, userName);
         }
 
         public void HandlePut(string accountId, decimal money)
@@ -111,9 +100,8 @@ namespace BankPerson
             }
         }
 
-        public void HandleList()
+        public void HandleList(string userName)
         {
-
             for (int i = 0; i < ArrayBank.Counter(); i++)
             {
                 Console.WriteLine($"{ArrayBank[i].Id} {ArrayBank[i].MoneyAmount}");

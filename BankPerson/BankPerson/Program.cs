@@ -23,15 +23,17 @@ namespace BankPerson
 
             while (true)
             {
+                /*
                 try
                 {
+                */
                     Write();
 
                     switch (Comand)
                     {
 
                         case "add":
-                            handleMethods.HandleAdd(Arguments[1]);
+                            handleMethods.HandleAdd(Arguments[1], Arguments[2]);
                             break;
 
                         case "addRange":
@@ -51,7 +53,7 @@ namespace BankPerson
                             break;
 
                         case "list":
-                            handleMethods.HandleList();
+                            handleMethods.HandleList(Arguments[1]);
                             break;
 
                         case "addPerson":
@@ -60,11 +62,12 @@ namespace BankPerson
                     }
 
                 }
+            /*
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Exception: {ex.Message}");
                 }
+            */
             }
         }
     }
-}

@@ -14,6 +14,9 @@ namespace BankPerson
         private BankAccount[] Account = new BankAccount[10];
         private Person[] SomePerson = new Person[10];
 
+        private int counterAdmin = 0;
+        private int counterPerson = 0;
+
         public BankAccount this[int index]
         {
             get
@@ -25,25 +28,45 @@ namespace BankPerson
                 Account[index] = value;
             }
         }
-        public void Add(BankAccount other)
+
+        public void AddPerson(string name, string password)
+        {
+            if (counterAdmin == 1)
+            {
+                SomePerson[counterPerson] = new Person();
+                SomePerson[counterPerson].Name = name;
+                SomePerson[counterPerson].Password = password;
+                counterPerson++;
+            }
+            else
+            {
+                throw new Exception("Only admin user can add person.");
+            }
+        }
+
+        public void Add(BankAccount other, string userName)
         {
             CheckName(other.Id);
+
             StreamWriter writeId = new StreamWriter(path, true);
             writeId.Write($"{other.Id} ");
             writeId.WriteLine(other.MoneyAmount);
             writeId.Close();
 
             Account[counter] = other;
-            counter++;
+
+            int personNumber = Person(userName);
+            SomePerson[personNumber].PersonAccount[SomePerson[personNumber].Counter] = other;
+            SomePerson[personNumber].CounterPlus();
 
             CheckLength();
         }
 
-        public void AddRange(BankAccount[] other)
+        public void AddRange(BankAccount[] other, string userName)
         {
             CheckNameAddRange(other);
 
-            for (int i = 1; i < other.Length; i++)
+            for (int i = 2; i < other.Length; i++)
             {
                 Account[counter] = other[i];
                 counter++;
@@ -54,6 +77,13 @@ namespace BankPerson
                 writeId.Write($"{other[i].Id} ");
                 writeId.WriteLine(other[i].MoneyAmount);
                 writeId.Close();
+            }
+
+            for (int i = 2; i < other.Length; i++)
+            {
+                int personNumber = Person(userName);
+                SomePerson[personNumber].PersonAccount[SomePerson[personNumber].Counter] = other[i];
+                SomePerson[personNumber].CounterPlus();
             }
         }
 
@@ -70,7 +100,7 @@ namespace BankPerson
 
         private void CheckNameAddRange(BankAccount[] other)
         {
-            for (int i = 1; i < other.Length; i++)
+            for (int i = 2; i < other.Length; i++)
             {
                 CheckName(other[i].Id);
             }
@@ -105,6 +135,30 @@ namespace BankPerson
         public int Counter()
         {
             return counter;
+        }
+
+        public int AdminCounter()
+        {
+            return counterAdmin;
+        }
+
+        public void AdminPlus()
+        {
+            counterAdmin++;
+        }
+
+        public int Person(string userName)
+        {
+            int a = 0;
+
+            for (int i = 0; i < counterPerson; i++)
+            {
+                if (SomePerson[i].Name == userName)
+                {
+                    a = i;
+                }
+            }
+            return a;
         }
     }
 }
