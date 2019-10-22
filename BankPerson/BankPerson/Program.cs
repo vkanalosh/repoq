@@ -23,10 +23,8 @@ namespace BankPerson
 
             while (true)
             {
-                /*
                 try
                 {
-                */
                     Write();
 
                     switch (Comand)
@@ -62,12 +60,11 @@ namespace BankPerson
                     }
 
                 }
-            /*
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Exception: {ex.Message}");
                 }
-            */
             }
         }
     }
+}

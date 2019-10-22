@@ -48,11 +48,6 @@ namespace BankPerson
         {
             CheckName(other.Id);
 
-            StreamWriter writeId = new StreamWriter(path, true);
-            writeId.Write($"{other.Id} ");
-            writeId.WriteLine(other.MoneyAmount);
-            writeId.Close();
-
             Account[counter] = other;
 
             int personNumber = Person(userName);
@@ -72,11 +67,6 @@ namespace BankPerson
                 counter++;
 
                 CheckLength();
-
-                StreamWriter writeId = new StreamWriter(path, true);
-                writeId.Write($"{other[i].Id} ");
-                writeId.WriteLine(other[i].MoneyAmount);
-                writeId.Close();
             }
 
             for (int i = 2; i < other.Length; i++)
@@ -123,18 +113,14 @@ namespace BankPerson
             }
         }
 
-        public void ReadIdMoney()
-        {
-            string path = @"C:\Users\Valera\source\repos\Bank\BankArray.txt";
-            StreamReader readIdMoney = new StreamReader(path);
-
-            Console.WriteLine(readIdMoney.ReadToEnd());
-            readIdMoney.Close();
-        }
-
         public int Counter()
         {
             return counter;
+        }
+
+        public int PersonCounter()
+        {
+            return counterPerson;
         }
 
         public int AdminCounter()
@@ -159,6 +145,11 @@ namespace BankPerson
                 }
             }
             return a;
+        }
+
+        public Person Person(int personNumber)
+        {
+            return SomePerson[personNumber];
         }
     }
 }

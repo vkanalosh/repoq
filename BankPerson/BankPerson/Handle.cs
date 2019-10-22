@@ -102,9 +102,36 @@ namespace BankPerson
 
         public void HandleList(string userName)
         {
-            for (int i = 0; i < ArrayBank.Counter(); i++)
+            if (userName == "admin")
             {
-                Console.WriteLine($"{ArrayBank[i].Id} {ArrayBank[i].MoneyAmount}");
+                if (ArrayBank.AdminCounter() > 1)
+                {
+                    throw new Exception("Only admin can watch all accounts.");
+                }
+
+                for(int i = 0; i < ArrayBank.PersonCounter(); i++)
+                {
+                    Person person = new Person();
+                    person = ArrayBank.Person(i);
+
+                    Console.WriteLine($"Person {person.Name}");
+
+                    for(int j = 0; j < person.Counter; j++)
+                    {
+                        Console.WriteLine($"{ArrayBank.Person(i).PersonAccount[j].Id} {ArrayBank.Person(i).PersonAccount[j].MoneyAmount}");
+                    }
+                }
+            }
+            else
+            {
+                int personNumber = ArrayBank.Person(userName);
+                Person person = new Person();
+                person = ArrayBank.Person(personNumber);
+
+                for (int i = 0; i < person.Counter; i++)
+                {
+                    Console.WriteLine($"{ArrayBank.Person(personNumber).PersonAccount[i].Id} {ArrayBank.Person(personNumber).PersonAccount[i].MoneyAmount}");
+                }
             }
         }
 
